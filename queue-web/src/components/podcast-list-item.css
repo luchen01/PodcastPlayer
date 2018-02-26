@@ -1,0 +1,8 @@
+.podcast-list-item img {
+    width: 150px;
+}
+
+.podcast-list-item {
+    display: block;
+    padding: 10px;
+}

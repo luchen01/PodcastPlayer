@@ -1,0 +1,28 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  padding: 10px 0;
+  color: white;
+  position: sticky;
+  width: 100%;
+  top: 0px;
+  background-color: #fd595a;
+}
+
+.App-header img {
+  height: 30px;
+}
+
+.App-body {
+  padding-bottom: 100px;
+}
+
+.App-footer {
+  position: fixed;
+  bottom:0;
+  background-color: #fd595a;
+  width: 100%;
+  padding: 10px 0;
+}

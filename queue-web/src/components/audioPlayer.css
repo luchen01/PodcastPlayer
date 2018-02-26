@@ -1,0 +1,8 @@
+.audio-player .flex{
+    background-color: #fd595a !important;
+    box-shadow: none !important;
+}
+
+.audio-player .toggle-play-button {
+    background-color: #000 !important;
+}
