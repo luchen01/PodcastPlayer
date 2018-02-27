@@ -58,7 +58,7 @@ Below are your core features.
 
 - What is your db schema? 
 - What are your routes? What does each route read from or write to database?
-- Bonus: Can you design in this with both a SQL and NoSQL implementation?
+- Bonus: Can you design this with both a SQL and NoSQL implementation?
 
 *If you are not familiar with calendaring apps, take a look at google calendar! It's important to understand how these features work before trying to tackle this problem*
 
