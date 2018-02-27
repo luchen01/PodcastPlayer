@@ -30,6 +30,8 @@ Key pages:
 
 *Think about the entities relationship i.e. some actors are directors*
 
+---
+
 ### Amazon Customer Reviews
 
 <b> Task: Design the tables/documents related to the following: Products, Reviews, Customers, Ratings/Stars & Comments. </b>
@@ -44,6 +46,7 @@ Key pages:
 [Product page](https://www.amazon.com/VIZ-PRO-Magnetic-Circular-Whiteboard-Erasers/dp/B07142X292/ref=pd_rhf_se_s_cp_0_7?_encoding=UTF8&pd_rd_i=B07142X292&pd_rd_r=GGD51JB59HQ46HNY68MY&pd_rd_w=aNU4G&pd_rd_wg=cNApv&psc=1&refRID=GGD51JB59HQ46HNY68MY)
 | [Custom page](https://www.amazon.com/gp/profile/amzn1.account.AG2AJ675JOFBWW6PXAOP5OHOJXUA/ref=cm_cr_srp_d_pdp?ie=UTF8)
 
+---
 
 ### Team Calendar (20 min)
 
@@ -76,6 +79,7 @@ Below are your core features.
 
 - Expand on stage 2. How would you implement recurring events?
 
+---
 
 ### Online Quiz Generator (25 min)
 
