@@ -28,6 +28,8 @@ Key pages:
 - Studio Page: View all `movies` by `studio` 
 - Homepage: Show the most frequently searched `movies` in the last X days. 
 
+*Think about the entities relationship i.e. some actors are directors*
+
 ### Amazon Customer Reviews
 
 <b> Task: Design the tables/documents related to the following: Products, Reviews, Customers, Ratings/Stars & Comments. </b>
