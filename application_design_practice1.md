@@ -32,7 +32,7 @@ Key pages:
 
 ---
 
-### Amazon Customer Reviews
+### Amazon Customer Reviews (10 min)
 
 <b> Task: Design the tables/documents related to the following: Products, Reviews, Customers, Ratings/Stars & Comments. </b>
 
