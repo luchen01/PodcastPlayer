@@ -1,5 +1,15 @@
 ## Application Design Practice (15 min)
 
+For the below exercises, you will practice thinking about schemas and design for different applications. 
+
+For each exercise, write out your schema on paper or in a google doc. Ping a TA for review when you are done! 
+
+When designing SQL schemas, for each table, write the column name and type. Denoting foreign keys can also be helpful! 
+
+When designing NoSQL schemas (aka Mongo), you can write your models in javascript. Ex: `Teachers: [{name: "Cindy", Rating: 5}, {Name: David, Rating: 4.5}]` 
+
+---
+
 ### Warmup: IMDB (10 min)
 
 <b> Task: Design the tables/documents related to Movies, Actors, Directors, Studios, Casts in IMDB. </b>
