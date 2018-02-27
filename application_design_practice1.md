@@ -1,4 +1,4 @@
-## Application Design Practice (15 min)
+## Application Design Practice
 
 For the below exercises, you will practice thinking about schemas and design for different applications. 
 
