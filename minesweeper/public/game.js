@@ -58,7 +58,6 @@ $( document ).ready(function() {
       let col = Number(coor[1]);
       boardArr[row][col] = 1;
       // console.log("row", row);
-      console.log(`#${row}_${col}`);
       // $(`#${row}_${col}`).addClass("hasMine");
     })
 
@@ -156,7 +155,6 @@ $( document ).ready(function() {
       let currNode = q.pop();
       haveSeen[currNode] = true;
       let newNeighbors = getNeighbors(currNode[0],currNode[1], boardArr).neighbors;
-        console.log("newNeighbors",newNeighbors);
         newNeighbors.map(el=>{
           //if cell doesn't have a bomb and doesn't have neighbor with a bomb and have not visited
           if(boardArr[el[0]][el[1]] === 0 && el[2]===0 && !haveSeen[el]){
@@ -168,16 +166,11 @@ $( document ).ready(function() {
       }
 
     let newEntries = Object.keys(haveSeen);
-    console.log("newEntries", newEntries);
     for(let entry of newEntries){
         let node = entry.split(",");
-        console.log("node", node);
-        console.log("node1", node[0]);
-        // console.log("typeOf" typeOf node);
         let displayNum = node[2];
         let row = Number(node[0]);
         let col = Number(node[1]);
-        console.log(`#${row}_${col}`);
         showSelf(row, col, displayNum);
       }
     }
@@ -251,17 +244,13 @@ $( document ).ready(function() {
       const clickedCell = hoverId.split("_");
       const row = Number(clickedCell[0]);
       const col = Number(clickedCell[1]);
-      // flagged.add(hoverId);
-      console.log(clickedCell);
       let flag= `<img class="flagImg" src = "./flag.png" alt = "Flag">`
       $(`#${row}_${col}`).append(flag);
       $(`#${row}_${col}`).addClass("flag");
       if(boardArr[row][col] === 1){
         foundMine = foundMine + 1;
-        console.log(numberMine);
-        console.log(foundMine);
         let displayNum = Number(minesTotal) - Number(foundMine);
-        let gameStateHtml = `<h1> Mines left: ${displayNum}</h1>`
+        let gameStateHtml = (displayNum === 0) ? `<h1>You are a winner!! </h1>` : `<h1> Mines left: ${displayNum}</h1>`
         $('.gameState').html(gameStateHtml);
       }
   })
