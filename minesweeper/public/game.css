@@ -35,13 +35,16 @@ time, mark, audio, video {
   align-items: center;
   flex-direction: row;
   justify-content: auto;
-  height:30px;
+  height:40px;
+  margin: 1px;
 }
 
 .col {
   border: 2px solid black;
-  width:30px;
-  height: 30px;
+  width:40px;
+  height: 40px;
+  background-color: #c0c0c0;
+  margin:1px;
 }
 
 .form-group{
@@ -52,6 +55,10 @@ time, mark, audio, video {
 
 .hasMine{
   background-color: red;
+}
+
+.checked{
+  background-color: white;
 }
 
 .mineImg{
