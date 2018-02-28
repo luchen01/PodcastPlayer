@@ -57,8 +57,6 @@ $( document ).ready(function() {
       let row = Number(coor[0]);
       let col = Number(coor[1]);
       boardArr[row][col] = 1;
-      // console.log("row", row);
-      // $(`#${row}_${col}`).addClass("hasMine");
     })
 
     //count neighboring mines and display on the displayBoard;
@@ -119,32 +117,32 @@ $( document ).ready(function() {
   }
 
   //find neighbors that are not a bomb and are not surrounded by bombs
-  function getDirectNeighbors(row, col, board){
-    //check if neighbor has neighbor that has bombs
-    let countMine = 0;
-    let neighbors = [];
-    if(row > 0){
-      //top
-      if(board[row -1][col] === 1){countMine ++}
-      neighbors.push([row -1, col, displayArr[row-1][col]]);
-    }
-      //left
-    if(col > 0){
-      if(board[row][col-1] === 1){countMine ++}
-      neighbors.push([row, col-1, displayArr[row][col-1]]);
-    }
-    //right
-    if(col < board[row].length -1){
-      if(board[row][col+1] === 1){countMine ++}
-      neighbors.push([row, col+1,displayArr[row][col+1]]);
-    }
-    if(row < board.length -1){
-      //bottom
-      if(board[row+1][col] === 1){countMine ++}
-      neighbors.push([row+1, col,displayArr[row+1][col]]);
-    }
-    return {countMine, neighbors};
-  }
+  // function getDirectNeighbors(row, col, board){
+  //   //check if neighbor has neighbor that has bombs
+  //   let countMine = 0;
+  //   let neighbors = [];
+  //   if(row > 0){
+  //     //top
+  //     if(board[row -1][col] === 1){countMine ++}
+  //     neighbors.push([row -1, col, displayArr[row-1][col]]);
+  //   }
+  //     //left
+  //   if(col > 0){
+  //     if(board[row][col-1] === 1){countMine ++}
+  //     neighbors.push([row, col-1, displayArr[row][col-1]]);
+  //   }
+  //   //right
+  //   if(col < board[row].length -1){
+  //     if(board[row][col+1] === 1){countMine ++}
+  //     neighbors.push([row, col+1,displayArr[row][col+1]]);
+  //   }
+  //   if(row < board.length -1){
+  //     //bottom
+  //     if(board[row+1][col] === 1){countMine ++}
+  //     neighbors.push([row+1, col,displayArr[row+1][col]]);
+  //   }
+  //   return {countMine, neighbors};
+  // }
 
   function BFS(row, col){
     let q = [];
@@ -165,6 +163,7 @@ $( document ).ready(function() {
         });
       }
 
+    //show all the neighbors on the board
     let newEntries = Object.keys(haveSeen);
     for(let entry of newEntries){
         let node = entry.split(",");
@@ -175,6 +174,7 @@ $( document ).ready(function() {
       }
     }
 
+    //reveal board square
     function showSelf(row, col, displayNum){
       if(Number(displayNum) !== 0){
         if($(`#${row}_${col}`).children().length === 0){
@@ -186,8 +186,6 @@ $( document ).ready(function() {
         $(`#${row}_${col}`).addClass("checked");
       }
     }
-
-
 
   $('.newGameButton').on('click', (event)=>{
     event.preventDefault();
@@ -209,7 +207,7 @@ $( document ).ready(function() {
 
     //check if the cell has a mine
     if(boardArr[row][col] === 1){
-      // alert("You hit a mine!");
+      alert("You hit a mine!");
       let bomb = `<img class="mineImg" src = "./mine.png" alt = "Mine">`
       for(let i = 0; i < boardArr.length; i++){
         for(let j = 0; j < boardArr[i].length; j++){
