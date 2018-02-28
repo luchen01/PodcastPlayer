@@ -195,7 +195,7 @@ $( document ).ready(function() {
     const rowNum = Number($('#boardRow').val());
     const colNum = Number($('#boardCol').val());
     const numberMine = Number($('#numberMine').val());
-    // $('#gameBoard').removeClass("hide");
+    $('#gameBoard').removeClass("hide");
     createBoard(rowNum, colNum, numberMine);
   })
 
