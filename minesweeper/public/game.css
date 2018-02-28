@@ -54,11 +54,16 @@ time, mark, audio, video {
 }
 
 .hasMine{
-  background-color: red;
+  background-color: black;
 }
 
 .checked{
   background-color: white;
+}
+.checkedNotZero{
+  color: red;
+  font-weight: bold;
+  background-color: pink;
 }
 
 .mineImg{

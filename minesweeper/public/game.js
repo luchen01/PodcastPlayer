@@ -10,7 +10,6 @@ $( document ).ready(function() {
       let randomCol = '' + Math.floor(Math.random()*colNum);
       mineArr.add(randomRow + "_" + randomCol);
     }
-    console.log(mineArr);
     return mineArr;
   }
 
@@ -113,32 +112,81 @@ $( document ).ready(function() {
     return {countMine, neighbors};
   }
 
+  //find neighbors that are not a bomb and are not surrounded by bombs
+  function getDirectNeighbors(row, col, board){
+    //check if neighbor has neighbor that has bombs
+    let countMine = 0;
+    let neighbors = [];
+    if(row > 0){
+      //top
+      if(board[row -1][col] === 1){countMine ++}
+      neighbors.push([row -1, col, displayArr[row-1][col]]);
+    }
+      //left
+    if(col > 0){
+      if(board[row][col-1] === 1){countMine ++}
+      neighbors.push([row, col-1, displayArr[row][col-1]]);
+    }
+    //right
+    if(col < board[row].length -1){
+      if(board[row][col+1] === 1){countMine ++}
+      neighbors.push([row, col+1,displayArr[row][col+1]]);
+    }
+    if(row < board.length -1){
+      //bottom
+      if(board[row+1][col] === 1){countMine ++}
+      neighbors.push([row+1, col,displayArr[row+1][col]]);
+    }
+    return {countMine, neighbors};
+  }
 
   function BFS(row, col){
     let q = [];
-    let haveSeen = new Set();
+    let haveSeen = {};
     q.push([row, col, 0]);
-
     while(q.length > 0){
+      console.log("q", q);
       let currNode = q.pop();
-      haveSeen.add(currNode);
-        let newNeighbors = getNeighbors(currNode[0],currNode[1], boardArr).neighbors;
+      haveSeen[currNode] = true;
+      let newNeighbors = getNeighbors(currNode[0],currNode[1], boardArr).neighbors;
+        console.log("newNeighbors",newNeighbors);
         newNeighbors.map(el=>{
-          if(el[2]===0 && !haveSeen.has(el)){
+          //if cell doesn't have a bomb and doesn't have neighbor with a bomb and have not visited
+          if(boardArr[el[0]][el[1]] === 0 && el[2]===0 && !haveSeen[el]){
             q.push(el);
           } else {
-            haveSeen.add(el);
+            haveSeen[el] = true;
           }
         });
       }
-      haveSeen.forEach(node=>{
+
+    let newEntries = Object.keys(haveSeen);
+    console.log("newEntries", newEntries);
+    for(let entry of newEntries){
+        let node = entry.split(",");
+        console.log("node", node);
+        console.log("node1", node[0]);
+        // console.log("typeOf" typeOf node);
         let displayNum = node[2];
-        let row = node[0];
-        let col = node[1];
-        let showNeighbors = `<p>${displayNum}</p>`
-        $(`#${row}_${col}`).append(showNeighbors);
-      })
+        let row = Number(node[0]);
+        let col = Number(node[1]);
+        console.log(`#${row}_${col}`);
+        showSelf(row, col, displayNum);
+      }
     }
+
+    function showSelf(row, col, displayNum){
+      if(Number(displayNum) !== 0){
+        if($(`#${row}_${col}`).children().length === 0){
+          let showNeighbors = `<p>${displayNum}</p>`
+          $(`#${row}_${col}`).append(showNeighbors);
+          $(`#${row}_${col}`).addClass("checkedNotZero");
+        }
+      }else{
+        $(`#${row}_${col}`).addClass("checked");
+      }
+    }
+
 
 
   $('.newGameButton').on('click', (event)=>{
@@ -157,6 +205,7 @@ $( document ).ready(function() {
     const clickedCell = cellId.split("_");
     const row = Number(clickedCell[0]);
     const col = Number(clickedCell[1]);
+    var countMine = getNeighbors(row, col, boardArr).countMine;
 
     //check if the cell has a mine
     if(boardArr[row][col] === 1){
@@ -170,16 +219,12 @@ $( document ).ready(function() {
           }
         }
       }
-    } else if(getNeighbors(row, col, boardArr).countMine !== 0){
+    } else if( countMine !== 0){
         //check if the cell is surrounded by mines
-        let displayNum = getNeighbors(row, col, boardArr).countMine;
-        let showNeighbors = `<p>${displayNum}</p>`
-        $(`#${row}_${col}`).append(showNeighbors);
-        $(`#${row}_${col}`).addClass("checked");
-    } else if(getNeighbors(row, col, boardArr).countMine === 0){
+        showSelf(row, col,countMine)
+    } else if(countMine === 0){
         //if the cell is not surrounded by mine, use BFS to find the enclosed area
-        console.log(getNeighbors(row, col, boardArr).neighbors);
-        // BFS(row, col);
+        BFS(row, col);
     }
   })
 })
