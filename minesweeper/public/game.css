@@ -18,6 +18,47 @@ time, mark, audio, video {
     font: inherit;
     vertical-align: baseline;
 }
+
+.hide {
+  display: none;
+}
+
+.title {
+  text-align: center;
+  padding: 20px;
+  margin: 20px;
+}
+
+.row {
+  /* border: 2px solid black; */
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: auto;
+  height:30px;
+}
+
+.col {
+  border: 2px solid black;
+  width:30px;
+  height: 30px;
+}
+
+.form-group{
+  margin: 20px;
+  width: 20%;
+  display: inline-block;
+}
+
+.hasMine{
+  background-color: red;
+}
+
+.mineImg{
+  height: 30px;
+  width: 30px
+}
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
