@@ -2,6 +2,9 @@ $( document ).ready(function() {
   //create new empty board with customized row and col.
   var boardArr;
   var displayArr;
+  var hoverId = "";
+  var minesTotal = 0;
+  var foundMine = 0;
 
   function genBomb(rowNum, colNum, numberMine){
     var mineArr = new Set();
@@ -32,6 +35,8 @@ $( document ).ready(function() {
     //create global array representation of the board initialized with all 0
     boardArr = emptyBoard(rowNum, colNum);
     displayArr = emptyBoard(rowNum,colNum);
+    minesTotal = numberMine;
+    foundMine = 0;
     let mines = genBomb(rowNum, colNum, numberMine); //set of mines
 
     //create board squares on the front end and add mines to board
@@ -43,6 +48,8 @@ $( document ).ready(function() {
         $(`#row_${i}`).append(colHtml);
       }
     }
+    let gameStateHtml = `<h1> Mines left: ${numberMine - foundMine}</h1>`
+    $('.gameState').html(gameStateHtml);
 
     //add mines to the board
     mines.forEach(el=>{
@@ -214,10 +221,12 @@ $( document ).ready(function() {
       for(let i = 0; i < boardArr.length; i++){
         for(let j = 0; j < boardArr[i].length; j++){
           if(boardArr[i][j] === 1){
+             $(`#${i}_${j}`).empty();
               $(`#${i}_${j}`).append(bomb);
               $(`#${i}_${j}`).addClass("hasMine")
           }
         }
+        $('body').css("background-image", "./mine.png");
       }
     } else if( countMine !== 0){
         //check if the cell is surrounded by mines
@@ -227,4 +236,34 @@ $( document ).ready(function() {
         BFS(row, col);
     }
   })
+
+  $('#gameBoard').delegate(".col", 'mouseenter', (event)=>{
+    event.preventDefault();
+    hoverId = event.target.id;
+  })
+
+  $('#gameBoard').delegate(".col", 'mouseleave', (event)=>{
+    event.preventDefault();
+    hoverId = null;
+  })
+
+  $('body').on('keydown', (event)=>{
+      const clickedCell = hoverId.split("_");
+      const row = Number(clickedCell[0]);
+      const col = Number(clickedCell[1]);
+      // flagged.add(hoverId);
+      console.log(clickedCell);
+      let flag= `<img class="flagImg" src = "./flag.png" alt = "Flag">`
+      $(`#${row}_${col}`).append(flag);
+      $(`#${row}_${col}`).addClass("flag");
+      if(boardArr[row][col] === 1){
+        foundMine = foundMine + 1;
+        console.log(numberMine);
+        console.log(foundMine);
+        let displayNum = Number(minesTotal) - Number(foundMine);
+        let gameStateHtml = `<h1> Mines left: ${displayNum}</h1>`
+        $('.gameState').html(gameStateHtml);
+      }
+  })
+
 })

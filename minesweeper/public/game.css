@@ -71,6 +71,15 @@ time, mark, audio, video {
   width: 30px
 }
 
+.flag{
+  background-color: beige;
+}
+
+.flagImg{
+  height: 30px;
+  width: 30px
+}
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
