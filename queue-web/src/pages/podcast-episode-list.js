@@ -32,7 +32,8 @@ function PodcastEpisodeList(props) {
 
   const queueStyle = {
     textAlign: "center",
-    alignItem: "center"
+    alignItem: "center",
+    border: '2px solid white',
   }
 
   return (
