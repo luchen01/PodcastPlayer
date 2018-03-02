@@ -25,7 +25,8 @@ function PodcastQueue(props) {
             <h3>{ep.title}</h3>
             <button onClick={() => props.loadPodcastEpisode(ep)}>Play</button>
             <button onClick={() => props.deleteFromQueue(ep)}>Delete</button>
-
+            <button onClick={() => props.upFromQueue(index)}>Up</button>
+            <button onClick={() => props.downFromQueue(index)}>Down</button>
           </div>
         ))
       }

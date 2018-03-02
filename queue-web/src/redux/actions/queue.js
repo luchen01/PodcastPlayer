@@ -1,4 +1,5 @@
 export const ADD_TO_QUEUE = 'ADD_TO_QUEUE';
+export const SKIP_FROM_QUEUE = 'SKIP_FROM_QUEUE';
 export const DELETE_FROM_QUEUE = 'DELETE_FROM_QUEUE';
 export const PLAY_NEXT_ON_QUEUE = 'PLAY_NEXT_ON_QUEUE';
 export const UP_FROM_QUEUE = 'UP_FROM_QUEUE';
@@ -15,6 +16,13 @@ export function deleteFromQueue(podcast){
   return {
     type: DELETE_FROM_QUEUE,
     value: podcast,
+  }
+}
+
+export function skipFromQueue(index){
+  return {
+    type: SKIP_FROM_QUEUE,
+    value: index
   }
 }
 
