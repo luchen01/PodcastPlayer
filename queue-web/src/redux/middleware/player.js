@@ -7,16 +7,22 @@ export default (store) => (next) => (action) => {
   const state = store.getState();
 
   if(action.type === "FINISH_EPISODE_PLAYBACK"){
-      console.log("state", state);
+      // console.log("state", state);
       if(state.queue.length > 0){
         store.dispatch(loadPodcastEpisode(state.queue[0]))
       }
   }
-
-  if(action.type === "LOAD_PODCAST_EPISODE" && action.payload.title === state.queue[0].title){
-    console.log("dispatch load podcast episode");
-    store.dispatch(playNextOnQueue());
+  
+  if(state.queue.length > 0){
+    if(action.type === "LOAD_PODCAST_EPISODE" && action.payload.title === state.queue[0].title){
+      // console.log("dispatch load podcast episode");
+      store.dispatch(playNextOnQueue());
+    }
   }
+
+
+
+  // if(action.type === "LOAD_PODCAST_EPISODE" && )
 
 
   next(action);

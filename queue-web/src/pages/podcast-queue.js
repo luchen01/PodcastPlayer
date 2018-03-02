@@ -12,11 +12,12 @@ const bindActions = Object.assign({}, playerActions, queueActions);
 
 function PodcastQueue(props) {
 
-  const { queue = [] } = props;
+  const { queue = [], player = {} } = props;
 
 
   return (
     <div>
+      <p>Now playing: {player.title}</p>
       {/* <h1>My Play Queue</h1> */}
       {queue.length < 1 ?
         <h1>You have no episodes on queue </h1> :
@@ -42,7 +43,7 @@ PodcastQueue.propTypes = {
   // imageFallbackURL: PropTypes.string,
 };
 
-const mapStateToProps = ({queue}) => ({queue});
+const mapStateToProps = ({queue, player}) => ({queue, player});
 const mapDispatchToProps = (dispatch) => bindActionCreators(bindActions, dispatch);
 
 export default connect(
