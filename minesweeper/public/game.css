@@ -37,6 +37,7 @@ time, mark, audio, video {
   justify-content: auto;
   height:40px;
   margin: 1px;
+  clear: both;
 }
 
 .col {
@@ -45,6 +46,11 @@ time, mark, audio, video {
   height: 40px;
   background-color: #c0c0c0;
   margin:1px;
+  float:left;
+  border-top: solid 2px white;
+  border-right: solid 2px white;
+  line-height: 40px;
+  text-align: center;
 }
 
 .form-group{
@@ -69,6 +75,7 @@ time, mark, audio, video {
 .mineImg{
   height: 30px;
   width: 30px
+  
 }
 
 .flag{

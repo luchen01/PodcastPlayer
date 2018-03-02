@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 import PodcastList from './pages/podcast-list';
 import PodcastEpisodeList from './pages/podcast-episode-list';
+import QueuePage from './pages/podcast-queue';
 import AudioPlayer from './components/audioPlayer';
 import logo from './images/horizonsH.png';
 
@@ -18,6 +19,7 @@ class App extends Component {
           <div className="App-body">
             <Route exact path="/" component={PodcastList}/>
             <Route path="/podcast/:slug" component={PodcastEpisodeList}/>
+            {/* <Route path = "/queue" component = {QueuePage} /> */}
           </div>
         </Router>
         <footer className="App-footer">

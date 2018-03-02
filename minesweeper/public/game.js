@@ -1,3 +1,11 @@
+
+class Game {
+  makeBoard(size){
+    //approach 1
+    this.board = new Array().fill(null).map(a=>new Array(size).fill(0));
+  }
+}
+
 $( document ).ready(function() {
   //create new empty board with customized row and col.
   var boardArr;
